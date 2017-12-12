@@ -55,4 +55,5 @@ django-compressor==2.2
 # Your custom requirements go here
 djangorestframework==3.7.3
 markdown==2.6.10
-django-filter==1.10
+django-filter==1.1.0
+coreapi==2.3.3
