@@ -10,6 +10,7 @@ var gulp = require('gulp'),
       sass = require('gulp-sass'),
       autoprefixer = require('gulp-autoprefixer'),
       cssnano = require('gulp-cssnano'),
+      
       rename = require('gulp-rename'),
       del = require('del'),
       plumber = require('gulp-plumber'),
@@ -25,15 +26,17 @@ var gulp = require('gulp'),
 // Relative paths function
 var pathsConfig = function (appName) {
   this.app = "./" + (appName || pjson.name);
+  var vendorsRoot = 'node_modules/';
 
   return {
+    
     app: this.app,
     templates: this.app + '/templates',
     css: this.app + '/static/css',
     sass: this.app + '/static/sass',
     fonts: this.app + '/static/fonts',
     images: this.app + '/static/images',
-    js: this.app + '/static/js',
+    js: this.app + '/static/js'
   }
 };
 
@@ -45,8 +48,13 @@ var paths = pathsConfig();
 
 // Styles autoprefixing and minification
 gulp.task('styles', function() {
-  return gulp.src(paths.sass + '/*.scss')
-    .pipe(sass().on('error', sass.logError))
+  return gulp.src(paths.sass + '/project.scss')
+    .pipe(sass({
+      includePaths: [
+        
+        paths.sass
+      ]
+    }).on('error', sass.logError))
     .pipe(plumber()) // Checks for errors
     .pipe(autoprefixer({browsers: ['last 2 versions']})) // Adds vendor prefixes
     .pipe(pixrem())  // add fallbacks for rem units
@@ -64,6 +72,9 @@ gulp.task('scripts', function() {
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(paths.js));
 });
+
+
+
 
 // Image compression
 gulp.task('imgCompression', function(){

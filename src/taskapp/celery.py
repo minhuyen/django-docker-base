@@ -10,7 +10,7 @@ if not settings.configured:
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')  # pragma: no cover
 
 
-app = Celery('ceramic-tiles-backend')
+app = Celery('src')
 
 
 class CeleryConfig(AppConfig):
@@ -32,13 +32,11 @@ class CeleryConfig(AppConfig):
             from raven.contrib.celery import register_logger_signal as raven_register_logger_signal
 
 
-            raven_client = RavenClient(dsn=settings.RAVEN_CONFIG['DSN'])
+            raven_client = RavenClient(dsn=settings.RAVEN_CONFIG['dsn'])
             raven_register_logger_signal(raven_client)
             raven_register_signal(raven_client)
-
-        
 
 
 @app.task(bind=True)
 def debug_task(self):
-    print('Request: {0!r}'.format(self.request))  # pragma: no cover
+    print(f'Request: {self.request!r}')  # pragma: no cover

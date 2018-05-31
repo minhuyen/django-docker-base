@@ -1,59 +1,22 @@
-# Wheel 0.25+ needed to install certain packages on CPython 3.5+
-# like Pillow and psycopg2
-# See http://bitly.com/wheel-building-fails-CPython-35
-# Verified bug on Python 3.5.1
-wheel==0.30.0
+pytz==2018.4  # https://github.com/stub42/pytz
+python-slugify==1.2.5  # https://github.com/un33k/python-slugify
+Pillow==5.1.0  # https://github.com/python-pillow/Pillow
+rcssmin==1.0.6  # https://github.com/ndparker/rcssmin
+argon2-cffi==18.1.0  # https://github.com/hynek/argon2_cffi
+whitenoise==3.3.1  # https://github.com/evansd/whitenoise
+redis>=2.10.5  # https://github.com/antirez/redis
+celery==3.1.25  # pyup: <4.0  # https://github.com/celery/celery
 
+# Django
+# ------------------------------------------------------------------------------
+django==2.0.5  # pyup: < 2.1  # https://www.djangoproject.com/
+django-environ==0.4.4  # https://github.com/joke2k/django-environ
+django-model-utils==3.1.2  # https://github.com/jazzband/django-model-utils
+django-allauth==0.36.0  # https://github.com/pennersr/django-allauth
+django-crispy-forms==1.7.2  # https://github.com/django-crispy-forms/django-crispy-forms
+django-compressor==2.2  # https://github.com/django-compressor/django-compressor
+django-redis==4.9.0  # https://github.com/niwinz/django-redis
 
-# Bleeding edge Django
-django==1.10.8 # pyup: >=1.10,<1.11
-
-# Configuration
-django-environ==0.4.4
-whitenoise==3.3.1
-
-
-# Forms
-django-crispy-forms==1.7.0
-
-# Models
-django-model-utils==3.0.0
-
-# Images
-Pillow==4.3.0
-
-# Password storage
-argon2-cffi==16.3.0
-
-# For user registration, either via email or social
-# Well-built with regular release cycles!
-django-allauth==0.34.0
-
-
-# Python-PostgreSQL Database Adapter
-psycopg2==2.7.3.2
-
-# Unicode slugification
-awesome-slugify==1.6.5
-
-# Time zones support
-pytz==2017.3
-
-# Redis support
-django-redis==4.8.0
-redis>=2.10.5
-
-
-celery==3.1.25
-
-
-
-rcssmin==1.0.6 
-django-compressor==2.2
-
-
-# Your custom requirements go here
-djangorestframework==3.7.3
-markdown==2.6.10
-django-filter==1.1.0
-coreapi==2.3.3
+# Django REST Framework
+djangorestframework==3.8.2  # https://github.com/encode/django-rest-framework
+coreapi==2.3.3  # https://github.com/core-api/python-client
